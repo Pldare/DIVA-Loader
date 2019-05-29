@@ -25,7 +25,7 @@ Please make sure to update tests as appropriate.
 
 This is a stripdown of [ThirteenAG's Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader/) for "dinput8.dll" usage only with minor modifications.
 
-TLAC (TotallyLegitArcadeController) by Samyuu (https://github.com/samyuu/TotallyLegitArcadeController).
+[TLAC (TotallyLegitArcadeController)](https://github.com/samyuu/TotallyLegitArcadeController) by Samyuu.
 
 Solution for Visual Studio 2019 platform toolset v142 and Windows 10 SDK (10.0.17763.0).
 
