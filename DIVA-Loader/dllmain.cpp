@@ -1,6 +1,7 @@
-// dllmain.cpp : Defines the entry point for the DLL application.
-#include "pch.h"
 #include "framework.h"
+#include "vector"
+#include "algorithm"
+#include "tuple"
 
 HMODULE hm;
 std::vector<std::wstring> iniPaths;
@@ -146,8 +147,8 @@ void FindFiles(WIN32_FIND_DATAW* fd)
 {
 	auto dir = GetCurrentDirectoryW();
 
-	HANDLE asiFile = FindFirstFileW(L"*.asi", fd);
-	if (asiFile != INVALID_HANDLE_VALUE)
+	HANDLE dvaFile = FindFirstFileW(L"*.dva", fd);
+	if (dvaFile != INVALID_HANDLE_VALUE)
 	{
 		do {
 			if (!(fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
@@ -155,16 +156,16 @@ void FindFiles(WIN32_FIND_DATAW* fd)
 				auto pos = wcslen(fd->cFileName);
 
 				if (fd->cFileName[pos - 4] == '.' &&
-					(fd->cFileName[pos - 3] == 'a' || fd->cFileName[pos - 3] == 'A') &&
-					(fd->cFileName[pos - 2] == 's' || fd->cFileName[pos - 2] == 'S') &&
-					(fd->cFileName[pos - 1] == 'i' || fd->cFileName[pos - 1] == 'I'))
+					(fd->cFileName[pos - 3] == 'd' || fd->cFileName[pos - 3] == 'D') &&
+					(fd->cFileName[pos - 2] == 'v' || fd->cFileName[pos - 2] == 'V') &&
+					(fd->cFileName[pos - 1] == 'a' || fd->cFileName[pos - 1] == 'A'))
 				{
 					auto path = dir + L'\\' + fd->cFileName;
 
 					if (GetModuleHandle(path.c_str()) == NULL)
 					{
 						auto h = LoadLibraryW(path);
-						SetCurrentDirectoryW(dir.c_str()); //in case asi switched it
+						SetCurrentDirectoryW(dir.c_str()); //in case dva switched it
 
 						if (h == NULL)
 						{
@@ -172,12 +173,12 @@ void FindFiles(WIN32_FIND_DATAW* fd)
 							if (e != ERROR_DLL_INIT_FAILED) // in case dllmain returns false
 							{
 								std::wstring msg = L"Unable to load " + std::wstring(fd->cFileName) + L". Error: " + std::to_wstring(e);
-								MessageBoxW(0, msg.c_str(), L"ASI Loader", MB_ICONERROR);
+								MessageBoxW(0, msg.c_str(), L"DIVA Loader", MB_ICONERROR);
 							}
 						}
 						else
 						{
-							auto procedure = (void(*)())GetProcAddress(h, "InitializeASI");
+							auto procedure = (void(*)())GetProcAddress(h, "InitializeDVA");
 
 							if (procedure != NULL)
 							{
@@ -187,8 +188,8 @@ void FindFiles(WIN32_FIND_DATAW* fd)
 					}
 				}
 			}
-		} while (FindNextFileW(asiFile, fd));
-		FindClose(asiFile);
+		} while (FindNextFileW(dvaFile, fd));
+		FindClose(dvaFile);
 	}
 }
 
@@ -199,7 +200,7 @@ void LoadPlugins()
 	auto szSelfPath = GetModuleFileNameW(hm).substr(0, GetModuleFileNameW(hm).find_last_of(L"/\\") + 1);
 	SetCurrentDirectoryW(szSelfPath.c_str());
 
-	auto nWantsToLoadPlugins = GetPrivateProfileIntW(L"diva", L"loadplugins", TRUE, iniPaths);
+	auto nWantsToLoadPlugins = GetPrivateProfileIntW(L"global", L"enable", TRUE, iniPaths);
 
 	if (nWantsToLoadPlugins)
 	{
@@ -593,7 +594,7 @@ void Init()
 	moduleName.resize(moduleName.find_last_of(L'.'));
 	modulePath.resize(modulePath.find_last_of(L"/\\") + 1);
 	iniPaths.emplace_back(modulePath + moduleName + L".ini");
-	iniPaths.emplace_back(modulePath + L"plugins\\global.ini");
+	iniPaths.emplace_back(modulePath + L"plugins\\config.ini");
 
 	LoadEverything();
 

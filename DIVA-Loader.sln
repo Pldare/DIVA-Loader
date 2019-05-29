@@ -5,22 +5,22 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DIVA-Loader", "DIVA-Loader\DIVA-Loader.vcxproj", "{CA479467-D518-46A2-AC86-3098ADA99FE5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TLAC", "TLAC\TLAC.vcxproj", "{2B5533BB-04A1-424F-9BCA-1CA963B46B7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Debug|x64.ActiveCfg = Debug|x64
-		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Debug|x64.Build.0 = Debug|x64
-		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Debug|x86.ActiveCfg = Debug|Win32
-		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Debug|x86.Build.0 = Debug|Win32
+		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Debug|x64.ActiveCfg = Release|x64
+		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Debug|x64.Build.0 = Release|x64
 		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Release|x64.ActiveCfg = Release|x64
 		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Release|x64.Build.0 = Release|x64
-		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Release|x86.ActiveCfg = Release|Win32
-		{CA479467-D518-46A2-AC86-3098ADA99FE5}.Release|x86.Build.0 = Release|Win32
+		{2B5533BB-04A1-424F-9BCA-1CA963B46B7F}.Debug|x64.ActiveCfg = Debug|x64
+		{2B5533BB-04A1-424F-9BCA-1CA963B46B7F}.Debug|x64.Build.0 = Debug|x64
+		{2B5533BB-04A1-424F-9BCA-1CA963B46B7F}.Release|x64.ActiveCfg = Release|x64
+		{2B5533BB-04A1-424F-9BCA-1CA963B46B7F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

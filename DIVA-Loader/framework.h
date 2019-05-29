@@ -7,7 +7,7 @@
 #include <string>
 #include <shlobj.h>
 #include <set>
-#include <ModuleList\ModuleList.hpp>
+#include "ModuleList.h"
 #include <intrin.h>
 #pragma intrinsic(_ReturnAddress)
 
