@@ -31,6 +31,6 @@ This is a stripdown of [**ThirteenAG's** Ultimate ASI Loader v4.47](https://gith
 
 [TLAC (TotallyLegitArcadeController) v2.0](https://github.com/samyuu/TotallyLegitArcadeController) by **Samyuu**.
 
-Solution for **Visual Studio 2019 platform toolset v142** and **Windows 10 SDK (10.0.17763.0)**.
+Solution for **Visual Studio 2019** platform toolset **v142** and **Windows 10 SDK (10.0.17763.0)**.
 
 Requires **Windows Universal CRT SDK**.
